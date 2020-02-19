@@ -1,0 +1,19 @@
+.modal.show {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  .modal-content {
+    width: 250px;
+  }
+}
+
+.desk-sort {
+  button {
+    font-weight: 500;
+    color: #ccc;
+  }
+  button.active {
+    color: #007bff !important;
+    text-decoration: underline !important;
+  }
+}

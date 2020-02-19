@@ -1,10 +1,11 @@
-
-
-## Available Scripts
+[DEMO](http://nageshwari17.github.io/shopping-cart)
 
 In the project directory, you can run:
+
 ### `npm install`
+
 then
+
 ### `npm start`
 
 Runs the app in the development mode.<br />

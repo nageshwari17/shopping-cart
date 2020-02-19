@@ -91,6 +91,7 @@ body {
     border-right: 1px solid #ccc;
     padding-top: 15px;
     margin-top: 0px;
+    border-bottom: 0px;
   }
   .filters {
     @media screen and (min-width: 767px) {
@@ -176,6 +177,9 @@ body {
   background-color: $headerFooter;
   padding: 10px 0px;
   color: $white;
+}
+.content-wrapper {
+  min-height: 85vh;
 }
 
 .minh {

@@ -1,13 +1,8 @@
 import React, { Fragment } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  matchPath
-} from "react-router-dom";
+import { HashRouter, Route, Switch, matchPath } from "react-router-dom";
 // import { matchPath } from "react-router";
 import Cart from "./components/cart";
-import PLPheader from "./components/ProductListing/PLPheader";
+import Header from "./components/common/header";
 import "./scss/global.scss";
 import ProductListing from "./components/ProductListing";
 import Footer from "./components/common/footer";
@@ -138,30 +133,32 @@ class App extends React.Component {
     return (
       <Fragment>
         <div className="container-fluid minh p-0">
-          <Router>
-            <PLPheader count={count} />
+          <HashRouter basename="/">
+            <Header count={count} />
             <Switch>
-              <Route exact path="/">
-                <ProductListing
-                  items={items}
-                  addTocart={this.addTocart}
-                  handleSort={this.handleSort}
-                  handleFilters={this.handleFilters}
-                  mobileView={this.state.mobileView}
-                />
-              </Route>
-              <Route exact path="/cart">
-                <Cart
-                  cartItem={cartItem}
-                  addQty={this.addQty}
-                  removeQty={this.removeQty}
-                  removeItem={this.removeItem}
-                  editQty={this.editQty}
-                  mobileView={this.state.mobileView}
-                />
-              </Route>
+              <div className="content-wrapper">
+                <Route exact path="/">
+                  <ProductListing
+                    items={items}
+                    addTocart={this.addTocart}
+                    handleSort={this.handleSort}
+                    handleFilters={this.handleFilters}
+                    mobileView={this.state.mobileView}
+                  />
+                </Route>
+                <Route exact path="/cart">
+                  <Cart
+                    cartItem={cartItem}
+                    addQty={this.addQty}
+                    removeQty={this.removeQty}
+                    removeItem={this.removeItem}
+                    editQty={this.editQty}
+                    mobileView={this.state.mobileView}
+                  />
+                </Route>
+              </div>
             </Switch>
-          </Router>
+          </HashRouter>
           <Footer />
         </div>
       </Fragment>

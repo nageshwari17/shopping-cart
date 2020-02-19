@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { CURRENCYCODE } from "../../constants";
+import ProductDetails from "../common/productDetails";
+import ImageThubnail from "../common/imageThubnail";
 
 class CartItem extends Component {
   constructor(props) {
@@ -32,36 +33,13 @@ class CartItem extends Component {
 
   render() {
     const { item, offeredPrice } = this.props;
-
-    const currency = String.fromCharCode(CURRENCYCODE);
     return (
       <React.Fragment>
         <div className="item-img col-4">
-          <img
-            src={item.img_url}
-            alt={item.name}
-            className="img-fluid product-img"
-          />
+          <ImageThubnail item={item} />
         </div>
         <div className="item-details col-8">
-          <span className="product-name">{item.name}</span>
-          <div className="product price">
-            {item.discount && item.discount > 0 && (
-              <span className="offeredPrice fw-600">
-                {currency} {offeredPrice}
-              </span>
-            )}
-            <span
-              className={`actualPrice ${
-                item.discount && item.discount ? "strickout" : "fw-600 p-0"
-              }`}
-            >
-              {currency} {item.price}
-            </span>
-            {item.discount && item.discount > 0 && (
-              <span className="discount fw-600">{item.discount}% off</span>
-            )}
-          </div>
+          <ProductDetails item={item} offeredPrice={offeredPrice} />
           <div className="qtyBox d-flex">
             <button
               className="btn btn-link fa fa-minus"

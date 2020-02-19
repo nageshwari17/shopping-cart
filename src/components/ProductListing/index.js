@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from "react";
-import { CURRENCYCODE } from "../../constants";
+import ProductDetails from "../common/productDetails";
+import ImageThubnail from "../common/imageThubnail";
 import Sort from "./sortModal";
 import Filter from "./filter";
 
 const ProductListing = props => {
   const { items, addTocart, handleSort, handleFilters } = props;
-  const currency = String.fromCharCode(CURRENCYCODE);
   const [isOpen, setIsOpen] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
@@ -70,34 +70,9 @@ const ProductListing = props => {
                 item.price - (item.price * item.discount) / 100;
               return (
                 <div key={item.id} className="col-6 col-md-20">
-                  <img
-                    src={item.img_url}
-                    className="img-fluid product-img"
-                    alt={item.name}
-                  />
+                  <ImageThubnail item={item} />
                   <div className="list-bottom">
-                    <span className="product-name">{item.name}</span>
-                    <div className="product price">
-                      {item.discount !== undefined && item.discount > 0 && (
-                        <span className="offeredPrice fw-600">
-                          {currency} {offeredPrice}
-                        </span>
-                      )}
-                      <span
-                        className={`actualPrice ${
-                          item.discount && item.discount
-                            ? "strickout"
-                            : "fw-600 p-0"
-                        }`}
-                      >
-                        {currency} {item.price}
-                      </span>
-                      {item.discount !== undefined && item.discount > 0 && (
-                        <span className="discount fw-600">
-                          {item.discount}% off
-                        </span>
-                      )}
-                    </div>
+                    <ProductDetails item={item} offeredPrice={offeredPrice} />
                     <div className="cart-btn text-center">
                       <button
                         className="btn btn-primary addtocart"
